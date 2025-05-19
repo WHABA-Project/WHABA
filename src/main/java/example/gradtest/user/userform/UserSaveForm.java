@@ -1,10 +1,8 @@
-package example.gradtest.user;
+package example.gradtest.user.userform;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,6 +27,15 @@ public class UserSaveForm {
 
     @NotBlank
     private String name;
+
+    @NotBlank
+    private String birth;
+
+    @NotBlank
+    private String nationality;
+
+    @NotBlank
+    private String gender;
 
     @NotBlank
     private LocalDateTime createDate;

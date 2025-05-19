@@ -43,11 +43,14 @@ public class User {
     @Column(name = "login_time")
     private LocalDateTime loginTime;
 
-    public User(String userid, String useremail, String password, String name, LocalDateTime createDate) {
+    public User(String userid, String useremail, String password, String name, String birth, String nationality, String gender) {
         this.userid = userid;
         this.useremail = useremail;
         this.password = password;
         this.name = name;
+        this.birth = birth;
+        this.nationality = nationality;
+        this.gender = gender;
         this.createDate = LocalDateTime.now();
     }
 }

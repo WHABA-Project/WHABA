@@ -1,4 +1,4 @@
-package example.gradtest.user;
+package example.gradtest.user.userform;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
@@ -6,11 +6,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserIdFindForm {
+public class UserLoginForm {
 
     @NotBlank
-    private String name;
+    private String userid;
 
     @NotBlank
-    private String email;
+    private String password;
 }
