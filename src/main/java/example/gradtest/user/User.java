@@ -1,20 +1,18 @@
 package example.gradtest.user;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
+import example.gradtest.user.userform.UserRole;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name="user")
+@Table(name="userTraveler")
 @Getter
 @Setter
 public class User {
+
     @Id
     @Column(name = "userid", length = 50)
     private String userid;    // PK
@@ -35,6 +33,10 @@ public class User {
     private String nationality;
 
     @Column
+    @Enumerated(EnumType.STRING)
+    private UserRole userRole;
+
+    @Column
     private String gender;
 
     @Column(name = "create_date")
@@ -43,7 +45,10 @@ public class User {
     @Column(name = "login_time")
     private LocalDateTime loginTime;
 
-    public User(String userid, String useremail, String password, String name, String birth, String nationality, String gender) {
+    public User() {
+    }
+
+    public User(String userid, String useremail, String password, String name, String birth, String nationality, String gender, UserRole userRole) {
         this.userid = userid;
         this.useremail = useremail;
         this.password = password;
@@ -51,6 +56,7 @@ public class User {
         this.birth = birth;
         this.nationality = nationality;
         this.gender = gender;
+        this.userRole = userRole;
         this.createDate = LocalDateTime.now();
     }
 }

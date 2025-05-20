@@ -1,6 +1,5 @@
 package example.gradtest.user.userform;
 
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
@@ -10,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class UserSaveForm {
+public class UserTravelerSaveForm {
 
     @NotBlank
     private String userid;
@@ -39,4 +38,5 @@ public class UserSaveForm {
 
     @NotBlank
     private LocalDateTime createDate;
+
 }

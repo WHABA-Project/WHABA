@@ -1,6 +1,7 @@
-package example.gradtest.user.userrepository;
+package example.gradtest.user.userrepository.jpa;
 
 import example.gradtest.user.User;
+import example.gradtest.user.userrepository.UserRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
@@ -50,5 +51,11 @@ public class JpaUserRepository implements UserRepository {
             return null;
         }
 
+    }
+
+    @Override
+    public void ChangePassword(User user, String password) {
+        User findUser = em.find(User.class, user.getUserid());
+        findUser.setPassword(password);
     }
 }

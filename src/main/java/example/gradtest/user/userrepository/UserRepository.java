@@ -13,4 +13,6 @@ public interface UserRepository {
     public List<User> findAll();
 
     public String findUserId(String name, String email);
+
+    public void ChangePassword(User user, String password);
 }
