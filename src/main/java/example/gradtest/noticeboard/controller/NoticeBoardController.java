@@ -56,7 +56,7 @@ public class NoticeBoardController {
             bindingResult.reject("instagramId", "인스타그램 아이디를 먼저 지정해주세요!");
         }
 
-        NoticeBoard saveNoticeBoard1 = new NoticeBoard(noticeBoard.getTitle(), noticeBoard.getDetail(), findUserProfile.getInstagramId(), findUserProfile.getKoreanLevel());
+        NoticeBoard saveNoticeBoard1 = new NoticeBoard(noticeBoard.getTitle(), noticeBoard.getDetail(), findUserProfile.getInstagramId(), findUserProfile.getKoreanLevel(), noticeBoard.getRegion());
         NoticeBoard savenoticeBoard = noticeBoardRepository.save(saveNoticeBoard1);
         model.addAttribute("noticeBoard", savenoticeBoard);
 

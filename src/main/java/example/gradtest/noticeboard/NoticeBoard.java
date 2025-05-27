@@ -41,14 +41,18 @@ public class NoticeBoard {
     @Column
     private String writingDate;
 
+    @Column
+    private String region;
+
     public NoticeBoard() {
     }
 
-    public NoticeBoard(String title, String detail, String instagramId, int koreanLevel) {
+    public NoticeBoard(String title, String detail, String instagramId, int koreanLevel, String region) {
         this.title = title;
         this.detail = detail;
         this.instagramId = instagramId;
         this.koreanLevel = koreanLevel;
+        this.region = region;
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         this.writingDate = LocalDateTime.now().format(dateTimeFormatter);
     }
