@@ -34,8 +34,13 @@ public class NoticeBoardController {
     private final TravelerProfileRepository travelerProfileRepository;
 
     @GetMapping
-    public String noticeBoardMain(Model model, HttpServletRequest request) {
-        List<NoticeBoard> noticeList = noticeBoardRepository.findAll();
+    public String noticeBoardMain(@RequestParam String region,
+                                  @RequestParam String travelDate,
+                                  @RequestParam String finishTravelDate,
+                                  @RequestParam String order,
+                                  Model model) {
+
+        List<NoticeBoard> noticeList = noticeBoardRepository.arrayNoticeList(region, travelDate, finishTravelDate, order);
         model.addAttribute("noticeList", noticeList);
         return "notice/main";
     }
@@ -56,7 +61,9 @@ public class NoticeBoardController {
             bindingResult.reject("instagramId", "인스타그램 아이디를 먼저 지정해주세요!");
         }
 
-        NoticeBoard saveNoticeBoard1 = new NoticeBoard(noticeBoard.getTitle(), noticeBoard.getDetail(), findUserProfile.getInstagramId(), findUserProfile.getKoreanLevel(), noticeBoard.getRegion());
+        NoticeBoard saveNoticeBoard1 = new NoticeBoard(noticeBoard.getTitle(), noticeBoard.getDetail(), findUserProfile.getInstagramId(),
+                findUserProfile.getKoreanLevel(), noticeBoard.getRegion(), noticeBoard.getTravelDate(), noticeBoard.getFinishTravelDate());
+
         NoticeBoard savenoticeBoard = noticeBoardRepository.save(saveNoticeBoard1);
         model.addAttribute("noticeBoard", savenoticeBoard);
 

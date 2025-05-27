@@ -44,15 +44,23 @@ public class NoticeBoard {
     @Column
     private String region;
 
+    @Column
+    private String travelDate;
+
+    @Column
+    private String finishTravelDate;
+
     public NoticeBoard() {
     }
 
-    public NoticeBoard(String title, String detail, String instagramId, int koreanLevel, String region) {
+    public NoticeBoard(String title, String detail, String instagramId, int koreanLevel, String region, String travelDate, String finishTravelDate) {
         this.title = title;
         this.detail = detail;
         this.instagramId = instagramId;
         this.koreanLevel = koreanLevel;
         this.region = region;
+        this.travelDate = travelDate;
+        this.finishTravelDate = finishTravelDate;
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         this.writingDate = LocalDateTime.now().format(dateTimeFormatter);
     }

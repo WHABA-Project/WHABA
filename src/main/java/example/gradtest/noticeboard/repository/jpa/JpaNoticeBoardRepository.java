@@ -59,4 +59,40 @@ public class JpaNoticeBoardRepository implements NoticeBoardRepository {
         List<NoticeBoard> resultList = em.createQuery(jpql, NoticeBoard.class).getResultList();
         return resultList;
     }
+
+    @Override
+    public List<NoticeBoard> arrayNoticeList(String region, String travelData, String finishTravelDate, String order) {
+        StringBuilder jpql = new StringBuilder("SELECT n FROM NoticeBoard n");
+        boolean hasCondition = false;
+
+        if (region != null || travelData != null || finishTravelDate != null) {
+            jpql.append(" WHERE ");
+            if (region != null) {
+                jpql.append("n.region = :region");
+                hasCondition = true;
+            }
+            if (travelData != null) {
+                if (hasCondition) jpql.append(" AND ");
+                jpql.append("n.travelDate = :travelDate");
+                hasCondition = true;
+            }
+            if (finishTravelDate != null) {
+                if (hasCondition) jpql.append(" AND ");
+                jpql.append("n.finishTravelDate = :finishTravelDate");
+            }
+        }
+
+        if (order != null && !order.isBlank()) {
+            jpql.append(" ORDER BY n.").append(order); // 사용자가 전달한 order 값은 신뢰할 수 있는 값이어야 함!
+        }
+
+        TypedQuery<NoticeBoard> query = em.createQuery(jpql.toString(), NoticeBoard.class);
+
+        if (region != null) query.setParameter("region", region);
+        if (travelData != null) query.setParameter("travelDate", travelData);
+        if (finishTravelDate != null) query.setParameter("finishTravelDate", finishTravelDate);
+
+        return query.getResultList();
+
+    }
 }

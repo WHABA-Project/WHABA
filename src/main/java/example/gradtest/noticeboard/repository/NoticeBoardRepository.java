@@ -18,4 +18,6 @@ public interface NoticeBoardRepository {
     NoticeBoard edit(Long noticeBoardId, EditNoticeBoardForm editNoticeBoardForm);
 
     List<NoticeBoard> findAll();
+
+    List<NoticeBoard> arrayNoticeList(String region, String travelData, String finishTravelDate, String order);
 }
