@@ -1,4 +1,4 @@
-package example;
+package example.gradtest;
 
 import example.gradtest.Interceptor.GuideInterceptor;
 import example.gradtest.Interceptor.LoginInterceptor;
