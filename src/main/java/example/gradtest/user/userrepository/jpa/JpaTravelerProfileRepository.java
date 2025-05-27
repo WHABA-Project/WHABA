@@ -5,8 +5,10 @@ import example.gradtest.user.userrepository.TravelerProfileRepository;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
+@Transactional
 @RequiredArgsConstructor
 public class JpaTravelerProfileRepository implements TravelerProfileRepository {
 
@@ -17,4 +19,11 @@ public class JpaTravelerProfileRepository implements TravelerProfileRepository {
         em.persist(travelerProfile);
         return travelerProfile;
     }
+
+    @Override
+    public TravelerProfile findByUserId(String userId) {
+        TravelerProfile findTravelerProfile = em.find(TravelerProfile.class, userId);
+        return findTravelerProfile;
+    }
 }
+

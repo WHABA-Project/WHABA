@@ -5,8 +5,10 @@ import example.gradtest.user.userrepository.GuideProfileRepository;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
+@Transactional
 @RequiredArgsConstructor
 public class JpaGuideProfileRepository implements GuideProfileRepository {
 
@@ -41,4 +43,12 @@ public class JpaGuideProfileRepository implements GuideProfileRepository {
         GuideProfile findGuideProfile = em.find(GuideProfile.class, userId);
         findGuideProfile.setStar(star);
     }
+
+    @Override
+    public GuideProfile findByUserId(String userId) {
+        GuideProfile findGuideProfile = em.find(GuideProfile.class, userId);
+        return findGuideProfile;
+    }
+
+
 }

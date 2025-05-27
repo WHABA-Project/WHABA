@@ -13,4 +13,6 @@ public interface GuideProfileRepository {
     void changeInstagramId(String userId, String instagramId);
 
     void setStar(String userId, int star);
+
+    GuideProfile findByUserId(String userId);
 }

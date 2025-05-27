@@ -15,14 +15,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/user")
 public class UserController {
 
     private final UserRepository userRepository;
@@ -77,8 +76,13 @@ public class UserController {
     public String userStyleChoose(@ModelAttribute TravelerProfile travelerProfile, BindingResult bindingResult, HttpServletRequest request) {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        TravelerProfile saveTravelerProfile = new TravelerProfile(user.getUserid(), user, travelerProfile.getTravelStyle(),
+        TravelerProfile saveTravelerProfile = new TravelerProfile(travelerProfile.getTravelStyle(),
                 travelerProfile.getGuideStyle(), travelerProfile.getKoreanSpeckLevel(), travelerProfile.getKoreanListenLevel(), travelerProfile.getKoreanWriteLevel());
+
+        saveTravelerProfile.setUser(user);
+
+        int koreanLevel = userService.koreanLevel(travelerProfile.getKoreanSpeckLevel(), travelerProfile.getKoreanWriteLevel(), travelerProfile.getKoreanListenLevel());
+        saveTravelerProfile.setKoreanLevel(koreanLevel);
 
         travelerProfileRepository.save(saveTravelerProfile);
         return "redirect:/home";
@@ -111,7 +115,8 @@ public class UserController {
                 userGuideSaveForm.getName(), userGuideSaveForm.getBirth(), userGuideSaveForm.getNationality(), userGuideSaveForm.getGender(), UserRole.Guide);
         userRepository.save(saveUser);
 
-        GuideProfile guideProfile = new GuideProfile(saveUser.getUserid(), saveUser, userGuideSaveForm.getEnglishLevel());
+        GuideProfile guideProfile = new GuideProfile(userGuideSaveForm.getEnglishLevel());
+        guideProfile.setUser(saveUser);
         guideProfileRepository.save(guideProfile);
 
         return "redirect:/login";

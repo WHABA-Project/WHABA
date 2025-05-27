@@ -6,5 +6,5 @@ public interface TravelerProfileRepository {
 
     TravelerProfile save(TravelerProfile travelerProfile);
 
-
+    TravelerProfile findByUserId(String userId);
 }

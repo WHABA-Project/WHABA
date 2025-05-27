@@ -43,4 +43,9 @@ public class UserService {
         }
         return false;
     }
+
+    public int koreanLevel(int speakLevel, int writeLevel, int listenLevel) {
+        int totalKoreanLevel = speakLevel + writeLevel + listenLevel;
+        return totalKoreanLevel / 3;
+    }
 }

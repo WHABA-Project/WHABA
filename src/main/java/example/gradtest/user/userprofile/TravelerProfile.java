@@ -12,11 +12,11 @@ import lombok.Setter;
 public class TravelerProfile {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @OneToOne
     @JoinColumn(name = "userId")
-    @MapsId
     private User user;
 
     @Column
@@ -24,6 +24,9 @@ public class TravelerProfile {
 
     @Column
     private String GuideStyle;
+
+    @Column
+    private String instagramId;
 
     @Column
     private int koreanSpeckLevel;
@@ -34,13 +37,15 @@ public class TravelerProfile {
     @Column
     private int koreanWriteLevel;
 
+    @Column
+    private int KoreanLevel;
+
     public TravelerProfile() {} // JPA 기본 생성자
 
-    public TravelerProfile(String id, User user, String travelStyle, String guideStyle, int koreanSpeckLevel, int koreanListenLevel, int koreanWriteLevel) {
-        this.id = id;
-        this.user = user;
+    public TravelerProfile(String travelStyle, String guideStyle, int koreanSpeckLevel, int koreanListenLevel, int koreanWriteLevel) {
         this.travelStyle = travelStyle;
-        GuideStyle = guideStyle;
+        this.GuideStyle = guideStyle;
+        this.instagramId = "인스타그램 아이디를 작성해주세요";
         this.koreanSpeckLevel = koreanSpeckLevel;
         this.koreanListenLevel = koreanListenLevel;
         this.koreanWriteLevel = koreanWriteLevel;

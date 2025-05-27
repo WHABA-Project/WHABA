@@ -12,11 +12,11 @@ import lombok.Setter;
 public class GuideProfile {
 
     @Id
-    private String id; // 보통 user_id와 동일한 값으로 설정
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    @MapsId // user_id = GuideProfile의 id
+    @JoinColumn(name = "user_id")
     private User user;
 
     @Column(name = "language_level")
@@ -34,9 +34,10 @@ public class GuideProfile {
     // 기본 생성자
     public GuideProfile() {}
 
-    public GuideProfile(String id, User user, String languageLevel) {
-        this.id = id;
-        this.user = user;
+    public GuideProfile(String languageLevel) {
         this.languageLevel = languageLevel;
+        this.address = "주소를 작성해주세요.";
+        this.instagramId = "인스타그램 아이디를 작성해주세요.";
+        this.star = 0;
     }
 }
