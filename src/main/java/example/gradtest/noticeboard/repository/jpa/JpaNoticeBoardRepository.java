@@ -95,4 +95,13 @@ public class JpaNoticeBoardRepository implements NoticeBoardRepository {
         return query.getResultList();
 
     }
+
+    @Override
+    public List<NoticeBoard> searchByKeyword(String searchWord) {
+        String jpql = "select n from NoticeBoard n where n.title like :searchWord";
+        List<NoticeBoard> resultList = em.createQuery(jpql, NoticeBoard.class)
+                .setParameter("searchWord", searchWord)
+                .getResultList();
+        return resultList;
+    }
 }

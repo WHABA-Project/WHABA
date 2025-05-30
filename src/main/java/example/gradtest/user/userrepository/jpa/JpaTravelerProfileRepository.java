@@ -25,5 +25,7 @@ public class JpaTravelerProfileRepository implements TravelerProfileRepository {
         TravelerProfile findTravelerProfile = em.find(TravelerProfile.class, userId);
         return findTravelerProfile;
     }
+
+    // 프로필 수정 메서드 제작해야함
 }
 

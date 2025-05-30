@@ -20,4 +20,6 @@ public interface NoticeBoardRepository {
     List<NoticeBoard> findAll();
 
     List<NoticeBoard> arrayNoticeList(String region, String travelData, String finishTravelDate, String order);
+
+    List<NoticeBoard> searchByKeyword(String searchWord);
 }
