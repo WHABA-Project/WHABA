@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "guide_profiles")
+@Table(name = "guide_profile")
 @Getter
 @Setter
 public class GuideProfile {
@@ -16,7 +16,7 @@ public class GuideProfile {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "userid")
     private User user;
 
     @Column(name = "language_level")

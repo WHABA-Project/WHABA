@@ -47,7 +47,7 @@ public class MyPageController {
         return "my-page/main";
     }
 
-    @GetMapping("/my-notice-board")
+    @GetMapping("/traveler/my-notice-board")
     public String myNoticeBoard(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
         String userId = (String) session.getAttribute("userId");
@@ -58,10 +58,12 @@ public class MyPageController {
         return "my-page/notice-board";
     }
 
-    @GetMapping("/my-review")
+    @GetMapping("/traveler/my-review")
     public String myReview(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
         String userId = (String) session.getAttribute("userId");
+
+        // review 저장소 기능 받아서 보여주는 거 추가
 
         return "";
     }
