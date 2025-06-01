@@ -1,7 +1,7 @@
-package example.gradtest.user.userrepository.jpa;
+package example.gradtest.user.repository.jpa;
 
 import example.gradtest.user.userprofile.TravelerProfile;
-import example.gradtest.user.userrepository.TravelerProfileRepository;
+import example.gradtest.user.repository.TravelerProfileRepository;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

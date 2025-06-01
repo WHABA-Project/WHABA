@@ -1,4 +1,4 @@
-package example.gradtest.home;
+package example.gradtest.home.controller;
 
 import example.gradtest.noticeboard.NoticeBoard;
 import example.gradtest.noticeboard.repository.NoticeBoardRepository;

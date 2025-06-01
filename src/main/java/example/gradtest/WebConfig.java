@@ -3,7 +3,7 @@ package example.gradtest;
 import example.gradtest.Interceptor.GuideInterceptor;
 import example.gradtest.Interceptor.LoginInterceptor;
 import example.gradtest.Interceptor.TravelerInterceptor;
-import example.gradtest.user.userrepository.UserRepository;
+import example.gradtest.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;

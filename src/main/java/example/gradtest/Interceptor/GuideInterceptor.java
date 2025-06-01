@@ -2,7 +2,7 @@ package example.gradtest.Interceptor;
 
 import example.gradtest.user.User;
 import example.gradtest.user.userform.UserRole;
-import example.gradtest.user.userrepository.UserRepository;
+import example.gradtest.user.repository.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;

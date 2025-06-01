@@ -1,11 +1,13 @@
-package example.gradtest.user.userrepository.jpa;
+package example.gradtest.user.repository.jpa;
 
 import example.gradtest.user.userprofile.GuideProfile;
-import example.gradtest.user.userrepository.GuideProfileRepository;
+import example.gradtest.user.repository.GuideProfileRepository;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Repository
 @Transactional
@@ -48,6 +50,13 @@ public class JpaGuideProfileRepository implements GuideProfileRepository {
     public GuideProfile findByUserId(String userId) {
         GuideProfile findGuideProfile = em.find(GuideProfile.class, userId);
         return findGuideProfile;
+    }
+
+    @Override
+    public List<GuideProfile> findAll() {
+        String jpql = "select g from guideProfile";
+        List resultList = em.createQuery(jpql).getResultList();
+        return resultList;
     }
 
 

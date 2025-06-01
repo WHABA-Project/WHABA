@@ -1,7 +1,7 @@
-package example.gradtest.user.userservice;
+package example.gradtest.user.service;
 
 import example.gradtest.user.User;
-import example.gradtest.user.userrepository.jpa.JpaUserRepository;
+import example.gradtest.user.repository.jpa.JpaUserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

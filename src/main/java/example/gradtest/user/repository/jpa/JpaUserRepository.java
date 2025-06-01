@@ -1,7 +1,7 @@
-package example.gradtest.user.userrepository.jpa;
+package example.gradtest.user.repository.jpa;
 
 import example.gradtest.user.User;
-import example.gradtest.user.userrepository.UserRepository;
+import example.gradtest.user.repository.UserRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;

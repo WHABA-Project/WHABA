@@ -1,6 +1,8 @@
-package example.gradtest.user.userrepository;
+package example.gradtest.user.repository;
 
 import example.gradtest.user.userprofile.GuideProfile;
+
+import java.util.List;
 
 public interface GuideProfileRepository {
 
@@ -15,4 +17,6 @@ public interface GuideProfileRepository {
     void setStar(String userId, int star);
 
     GuideProfile findByUserId(String userId);
+
+    List<GuideProfile> findAll();
 }

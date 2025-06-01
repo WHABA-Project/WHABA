@@ -1,11 +1,9 @@
-package example.gradtest.noticeboard.service;
+package example.gradtest.guideIntro.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class NoticeBoardService {
-
-
+public class GuideIntroService {
 }

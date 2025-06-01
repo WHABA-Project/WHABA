@@ -1,4 +1,4 @@
-package example.gradtest.user.userrepository;
+package example.gradtest.user.repository;
 
 import example.gradtest.user.User;
 
